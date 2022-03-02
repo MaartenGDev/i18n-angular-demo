@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {MatSelectChange} from "@angular/material/select";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'carbon-app';
+
+  constructor(private translateService: TranslateService) {}
+
+  handleLanguageChange($event: MatSelectChange) {
+    this.translateService.use($event.value);
+    console.log('Switching to: ' + $event.value);
+  }
 }
